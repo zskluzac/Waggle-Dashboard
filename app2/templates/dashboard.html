@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="/static/img/logo.png">
+    <link rel="stylesheet" type="text/css" href="/static/css/dashboard.css"/>
+    <meta charset="utf-8">
+    <title>Beehive Node Dashboard</title>
+
+</head>
+<body>
+
+<ul>
+    <li><a href="http://127.0.0.1:5000/">Beehive Node Dashboard</a></li>
+    <li><a href="http://127.0.0.1:5000/server">Beehive Server Dashboard</a></li>
+    <li><a href='http://127.0.0.1:5000/documentation'>Documentation</a></li>
+    <li><a href='http://127.0.0.1:4000'>Beehive API</a></li>
+</ul>
+
+<h1 style="border-bottom-style: solid; margin-top: 40px;">
+    <img src="/static/img/logo.png" alt="Smiley face" align="left">
+    Beehive Node Dashboard</h1>
+
+<div id="date"></div>
+
+<script type="text/javascript">
+function getDate() {
+document.getElementById("date").innerHTML = "Date: " + Date();
+t = setTimeout(function() {
+    getDate()
+  }, 500);
+}
+getDate();
+</script>
+
+<table id="data" style="background-color: #a89c5c;">
+    {% autoescape false %}
+    {{ dashtable }}
+    {% endautoescape %}
+</table>
+
+</body>
+</html>

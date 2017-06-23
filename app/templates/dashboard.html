@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+
+  <div class="jumbo">
+    <h2>Welcome to the Beehive Dashboard</h2>
+      <h3>The Beehive Network is a product of The Waggle Project</h3>
+  </div>
+  <div class="dash">
+      <table border="1" style="width:100%">
+          <tr>
+              <th>Node ID</th>
+              <th>Location</th>
+              <th>Status</th>
+          </tr>
+          <tr>
+              <td>110</td>
+              <td>Chicago</td>
+              <td bgcolor="green">Alive</td>
+          </tr>
+          <tr>
+              <td>111</td>
+              <td>Chattanooga</td>
+              <td bgcolor="red">Dead</td>
+          </tr>
+      </table>
+
+  </div>
+
+{% endblock %}

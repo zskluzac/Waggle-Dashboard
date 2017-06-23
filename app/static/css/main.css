@@ -1,0 +1,119 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #444;
+}
+
+/*
+ * Create brown header with a white logo
+ */
+
+header {
+  background-color: #775a4c;
+  height: 35px;
+  width: 100%;
+  opacity: .9;
+  margin-bottom: 10px;
+}
+
+header h1.logo {
+  margin: 0;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  float: left;
+}
+
+header h1.logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/*
+ * Center the body content
+ */
+
+.container {
+  width: 1800px;
+  margin: 0 auto;
+}
+
+/*
+ * Formats the Yellow "Welcome to Beehive Dashboard Box".
+ */
+
+div.jumbo {
+  padding: 10px 0 10px 0;
+  background-color: #f7e688;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+/*
+ * Formats the Documentation List
+ */
+
+div.docs {
+  padding: 10px 0 10px 0;
+  background-color: #f7e688;
+  -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+.docslist li {
+    list-style-type: none;
+    margin-left: -30px;
+}
+
+/*
+ * Formats the dashboard table.
+ */
+
+div.dash {
+    margin-top: 20px;
+    border: 3px solid black;
+    text-align: left;
+    background-color: #f7e688;
+}
+
+h2 {
+  font-size: 3em;
+  margin-top: 10px;
+  text-align: center;
+  letter-spacing: -2px;
+}
+
+h3 {
+  font-size: 1.7em;
+  font-weight: 100;
+  margin-top: 10px;
+  text-align: center;
+  letter-spacing: -1px;
+  color: #999;
+}
+
+/*
+ * Display navigation links inline
+ */
+
+.menu {
+  float: left;
+  margin-top: 8px;
+}
+
+.menu li {
+  display: inline;
+  float: left;
+}
+
+.menu li + li {
+  margin-left: 20px;
+}
+
+.menu li a {
+  color: #999;
+  text-decoration: none;
+}
