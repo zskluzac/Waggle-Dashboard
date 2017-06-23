@@ -19,8 +19,6 @@ def dashboard():
             The DASHTABLE parameter in the return statement connects the Jinja block in 'dashboard.html' to the HTML
             generated in the DASHTABLE function.
     """
-
-
     # http://127.0.0.1:5000/?location=chicago&status=alive
     location = str(request.args.get('location'))
     status = str(request.args.get('status'))
