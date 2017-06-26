@@ -88,6 +88,17 @@ def dashtable(data, argloc, argstat):
     return ''.join(tbl)  # This returns a single string of HTML code, which will produce the table.
 
 
+def servertable():
+    tbl = []
+    tbl.append("<tr>")
+    tbl.append("<th>Last Update</th>")
+    tbl.append("<th>Active Nodes (%)</th>")
+    tbl.append("<th>Median Uptime</th>")
+    tbl.append("<th>Malfunctioning Nodes</th>")
+    tbl.append("</tr>")
+    return ''.join(tbl)
+
+
 @app.route('/documentation')
 def documentation():
     """
@@ -99,7 +110,8 @@ def documentation():
 
 @app.route('/server')
 def server():
-    return render_template('serverdash.html', plots2="index.html")
+    serverTable = servertable()
+    return render_template('serverdash.html', plots2="index.html", servertable=serverTable)
 
 
 @app.route('/data.tsv')

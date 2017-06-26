@@ -6,7 +6,6 @@
     <meta charset="utf-8">
     <script src="//d3js.org/d3.v4.min.js"></script>
     <title>Beehive Server Dashboard</title>
-
 </head>
 <body>
 
@@ -18,7 +17,7 @@
 </ul>
 
 <h1 style="border-bottom-style: solid; margin-top: 40px;">
-    <img src="/static/img/logo.png" alt="Smiley face" align="left">
+    <img src="/static/img/logo.png" alt="Logo" align="left">
     Beehive Server Dashboard</h1>
 
 <div id="date"></div>
@@ -28,7 +27,7 @@ function getDate() {
 document.getElementById("date").innerHTML = "Date: " + Date();
 t = setTimeout(function() {
     getDate()
-  }, 500);
+  }, 1000);
 }
 getDate();
 </script>
@@ -84,7 +83,11 @@ d3.tsv("data.tsv", type, function(error, data) {
 
   layer.append("path")
       .attr("class", "area")
+      .attr("stroke", "black")
       .style("fill", function(d) { return z(d.key); })
+      .on('mouseover', function (d) { d3.select(this).style("fill-opacity", 0) })
+      .on('mouseout', function (d) { d3.select(this).style("fill-opacity", 1) })
+      .attr('onclick', "window.location='http://127.0.0.1:5000/documentation'")
       .attr("d", area);
 
   layer.filter(function(d) { return d[d.length - 1][1] - d[d.length - 1][0] > 0.01; })
@@ -116,5 +119,10 @@ function type(d, i, columns) {
 
 </script>
 
+<table>
+    {% autoescape false %}
+    {{ servertable }}
+    {% endautoescape %}
+</table>
 </body>
 </html>
