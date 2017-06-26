@@ -55,10 +55,10 @@ d3.tsv("data.tsv", type, function(error, data) {
       .style("text-anchor", "left")
       .text(function(d) { return d.key; });
 
-  <!--g.append("g")-->
-      <!--.attr("class", "axis axis&#45;&#45;x")-->
-      <!--.attr("transform", "translate(0," + height + ")")-->
-      <!--.call(d3.axisBottom(x));-->
+  g.append("g")
+      .attr("class", "axis axis--x")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x).ticks(d3.timeHour.every(5)));
 
   g.append("g")
       .attr("class", "axis axis--y")
@@ -67,7 +67,7 @@ d3.tsv("data.tsv", type, function(error, data) {
 
 function type(d, i, columns) {
   <!--d.time = parseTime(d.time);-->
-  d.time = d.time
+  d.time = d.time*1000
   for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = d[columns[i]] / 100;
   return d;
 }
