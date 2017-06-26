@@ -54,8 +54,8 @@ def dashtable(data, argloc, argstat):
     :return: A string of HTML code that generates a readable table of data.
     """
 
-    print(argloc)
-    print(argstat)
+    # print(argloc)
+    # print(argstat)
     testData = data
     tbl = []
 

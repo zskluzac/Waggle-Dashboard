@@ -8,10 +8,10 @@
 </head>
 <body>
 
-<ul class="navbar">
-    <li><a href="http://127.0.0.1:5000/">Beehive Node Dashboard</a></li>
-    <li><a href="http://127.0.0.1:5000/server">Beehive Server Dashboard</a></li>
-    <li><a href='http://127.0.0.1:5000/documentation'>Documentation</a></li>
+<ul>
+    <li><a href= {{ url_for("dashboard") }}>Beehive Node Dashboard</a></li>
+    <li><a href= {{ url_for("server") }}>Beehive Server Dashboard</a></li>
+    <li><a href= {{ url_for("documentation") }}>Documentation</a></li>
     <li><a href='http://127.0.0.1:4000'>Beehive API</a></li>
 </ul>
 
