@@ -96,6 +96,13 @@ def servertable():
     tbl.append("<th>Median Uptime</th>")
     tbl.append("<th>Malfunctioning Nodes</th>")
     tbl.append("</tr>")
+    for x in range(4):
+        tbl.append("<tr>")
+        tbl.append("<td>N/A</td>")
+        tbl.append("<td>N/A</td>")
+        tbl.append("<td>N/A</td>")
+        tbl.append("<td>N/A</td>")
+        tbl.append("</tr>")
     return ''.join(tbl)
 
 

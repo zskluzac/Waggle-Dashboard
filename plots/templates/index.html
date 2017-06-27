@@ -110,3 +110,16 @@ function type(d, i, columns) {
 }
 
 </script>
+
+<script>
+    <!--var ticks = d3.select("svg").selectAll("g");-->
+window.addEventListener('load', function() {
+    var ticks = svg.select("tick");
+    console.log(ticks.select("_groups"));
+    <!--var arr = Array.prototype.slice.call(ticks);-->
+    <!--console.log(arr);-->
+    <!--arr.forEach(function(d) {-->
+        <!--console.log();-->
+    <!--});-->
+})
+</script>
