@@ -41,6 +41,16 @@ def apirequest(url):
     return json_data
 
 
+def filterdata(data, args):
+    print(data)
+    fildata = data
+    # for arg in args:
+    #     for item in fildata:
+    #         if arg not in item.values():
+    #             data.remove(item)
+    return data
+
+
 def dashtable(data, argloc, argstat):
     """
 
@@ -56,7 +66,7 @@ def dashtable(data, argloc, argstat):
 
     # print(argloc)
     # print(argstat)
-    testData = data
+    testData = filterdata(data, [argloc, argstat])
     tbl = []
 
     # This section generates the table headers.
@@ -101,7 +111,8 @@ def servertable():
         tbl.append("<td>N/A</td>")
         tbl.append("<td>N/A</td>")
         tbl.append("<td>N/A</td>")
-        tbl.append("<td>N/A</td>")
+        tbl.append("<td>N/A"
+                   "</td>")
         tbl.append("</tr>")
     return ''.join(tbl)
 
