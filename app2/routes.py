@@ -41,14 +41,14 @@ def apirequest(url):
     return json_data
 
 
-def filterdata(data, args):
-    print(data)
+def filterdata(data, location, status):
     fildata = data
-    # for arg in args:
-    #     for item in fildata:
-    #         if arg not in item.values():
-    #             data.remove(item)
-    return data
+    # for row in fildata:
+    #     if row.get("location") != location:
+    #         fildata.remove(row)
+    #     if row.get("alive") != status:
+    #         fildata.remove(row)
+    return fildata
 
 
 def dashtable(data, argloc, argstat):
@@ -66,7 +66,8 @@ def dashtable(data, argloc, argstat):
 
     # print(argloc)
     # print(argstat)
-    testData = filterdata(data, [argloc, argstat])
+    # testData = filterdata(data, argloc, argstat)
+    testData = data
     tbl = []
 
     # This section generates the table headers.
@@ -135,14 +136,14 @@ def server():
 @app.route('/data.tsv')
 def data():
     jdata = apirequest("http://10.10.10.137:8000/nodeApi")
-    keyList = []
-    for x in jdata:
-        keyList.append(x)
-    keyList.sort()
+    timespan = []
+    for time in jdata:
+        timespan.append(time)
+    timespan.sort()
     tempFile = open("static/temp.csv", "w")
     writer = csv.DictWriter(tempFile, delimiter="\t", fieldnames=fieldNames)
     writer.writeheader()
-    for key in keyList:
+    for timestamp in timespan:
         onemin = 0
         fivemin = 0
         thirtymin = 0
@@ -150,18 +151,19 @@ def data():
         sixhour = 0
         day = 0
         week = 0
-        for x in jdata[key]:
-            if x < 60:
+        for nodeID in jdata.get(timestamp).keys():
+            up = jdata.get(timestamp).get(nodeID).get("uptime")
+            if up < 60:
                 onemin += 1
-            elif x < 60*5:
+            elif up < 60*5:
                 fivemin += 1
-            elif x < 60*30:
+            elif up < 60*30:
                 thirtymin += 1
-            elif x < 60*60:
+            elif up < 60*60:
                 hour += 1
-            elif x < 60*60*6:
+            elif up < 60*60*6:
                 sixhour += 1
-            elif x < 60*60*24:
+            elif up < 60*60*24:
                 day += 1
             else:
                 week += 1
@@ -174,7 +176,7 @@ def data():
         sixhour /= total
         day /= total
         week /= total
-        writer.writerow({"time": key, "< One Minute": onemin, "< Five Minutes": fivemin,
+        writer.writerow({"time": timestamp, "< One Minute": onemin, "< Five Minutes": fivemin,
                          "< Thirty Minutes": thirtymin, "< One Hour": hour, "< Six Hours": sixhour,
                          "< One Day": day, "> One Day": week})
     tempFile.close()
