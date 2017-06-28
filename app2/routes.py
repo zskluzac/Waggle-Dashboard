@@ -4,8 +4,9 @@ import csv
 
 app = Flask('app2')
 
+# These are variables declared at the top for accessibility. They may need to be changed often to update collected data.
 key_list = ["id", "location", "alive", "lastupdate"]  # A list of keys of relevant incoming JSON data.
-api_url = 'http://127.0.0.1:4000'  # The url of the Beehive API.
+api_url = 'http://127.0.0.1:4000'  # The url of the API for the node dashboard.
 fieldNames = ["time", "< One Minute", "< Five Minutes", "< Thirty Minutes", "< One Hour", "< Six Hours",
               "< One Day", "> One Day"]
 

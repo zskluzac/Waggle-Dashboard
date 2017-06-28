@@ -4,8 +4,6 @@
     <list default="true" id="0bab7336-e10b-461f-a4de-a1544da7017d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes.py" afterPath="$PROJECT_DIR$/routes.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../plots/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../plots/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../plots/static/temp.csv" afterPath="$PROJECT_DIR$/../plots/static/temp.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../testapi/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../testapi/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,8 +19,8 @@
       <file leaf-file-name="routes.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1602">
-              <caret line="212" column="107" lean-forward="false" selection-start-line="212" selection-start-column="107" selection-end-line="212" selection-end-column="107" />
+            <state relative-caret-position="96">
+              <caret line="6" column="120" lean-forward="false" selection-start-line="6" selection-start-column="120" selection-end-line="6" selection-end-column="120" />
               <folding>
                 <element signature="e#0#58#0" expanded="true" />
               </folding>
@@ -423,7 +421,14 @@
       <option name="project" value="LOCAL" />
       <updated>1498677430416</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added tons of documentation.">
+      <created>1498686803886</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1498686803886</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -433,7 +438,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1046875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299539" sideWeight="0.50421053" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14009216" sideWeight="0.49578947" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34285715" sideWeight="0.49578947" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32933578" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -514,7 +519,8 @@
     <MESSAGE value="Updated navbar to have dynamic links." />
     <MESSAGE value="Working on stacked area chart interactivity." />
     <MESSAGE value="Added ability to interpret node uptime data tied to node ids." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added ability to interpret node uptime data tied to node ids." />
+    <MESSAGE value="Added tons of documentation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added tons of documentation." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -717,8 +723,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1602">
-          <caret line="212" column="107" lean-forward="false" selection-start-line="212" selection-start-column="107" selection-end-line="212" selection-end-column="107" />
+        <state relative-caret-position="96">
+          <caret line="6" column="120" lean-forward="false" selection-start-line="6" selection-start-column="120" selection-end-line="6" selection-end-column="120" />
           <folding>
             <element signature="e#0#58#0" expanded="true" />
           </folding>
