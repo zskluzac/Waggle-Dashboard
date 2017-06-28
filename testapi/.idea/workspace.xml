@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7a88b66-9075-48c5-b17c-0c8fda91759c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../app2/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../app2/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../app2/routes.py" afterPath="$PROJECT_DIR$/../app2/routes.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../app2/static/temp.csv" afterPath="$PROJECT_DIR$/../app2/static/temp.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../plots/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../plots/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../plots/static/temp.csv" afterPath="$PROJECT_DIR$/../plots/static/temp.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,8 +43,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-23" />
-    <option name="y" value="732" />
+    <option name="y" value="86" />
     <option name="width" value="952" />
     <option name="height" value="1176" />
   </component>
@@ -237,7 +236,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-23" y="732" width="952" height="1176" extended-state="0" />
+    <frame x="0" y="86" width="952" height="1176" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11578947" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
