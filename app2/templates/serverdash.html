@@ -87,7 +87,8 @@ d3.tsv("data.tsv", type, function(error, data) {
       .style("fill", function(d) { return z(d.key); })
       .on('mouseover', function (d) { d3.select(this).style("fill", "#f3fccc") })
       .on('mouseout', function (d) { d3.select(this).style("fill", function(d) { return z(d.key); }) })
-      .attr('onclick', "window.location='http://127.0.0.1:5000/documentation'")
+      <!--.attr('onclick', "window.location='http://127.0.0.1:5000/documentation'")-->
+      .attr('onclick', "window.location='http://127.0.0.1:5000/'")
       .attr("d", area);
 
   layer.filter(function(d) { return d[d.length - 1][1] - d[d.length - 1][0] > 0.01; })
@@ -112,12 +113,28 @@ d3.tsv("data.tsv", type, function(error, data) {
 
 function type(d, i, columns) {
   <!--d.time = parseTime(d.time);-->
-  d.time = d.time*1000
+  d.time = d.time*1000;
   for (var i = 1, n = columns.length; i < n; ++i) d[columns[i]] = d[columns[i]] / 100;
   return d;
 }
 
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var paths = document.getElementsByClassName('area');
+        var query = document.querySelectorAll("path");
+        var d3paths = d3.selectAll("area");
+        console.log(d3paths.nodes());
+        console.log(query);
+        console.log(paths);
+        <!--var i;-->
+        <!--for (i = 0; i < paths.length; i++) {-->
+            <!--console.log(paths[i]);-->
+        <!--};-->
+    });
+</script>
+
 
 <table style="background-color: #a89c5c;">
     {% autoescape false %}

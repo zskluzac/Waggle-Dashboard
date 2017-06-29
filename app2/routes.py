@@ -23,7 +23,8 @@ def dashboard():
     # http://127.0.0.1:5000/?location=chicago&status=alive
     location = str(request.args.get('location'))
     status = str(request.args.get('status'))
-    table = dashtable(apirequest(api_url), location, status)
+    cat = str(request.args.get('cat'))
+    table = dashtable(apirequest(api_url), location, status, cat)
     # print(apirequest("http://10.10.10.137:7000/nodeApi"))
     return render_template('dashboard.html', dashtable=table)
 
@@ -39,8 +40,8 @@ def apirequest(url):
     return json_data
 
 
-def filterdata(data, location, status):
-    # TODO: Make this function actually usefully filter the data in a way the user might find useful.
+def filterdata(data, location, status, cat):
+    # TODO: Make this function actually usefully filter the data in a way the user may want.
     """
     The purpose of this function is to filter the data being provided to the table so that only the data chosen by the
     the user is displayed
@@ -52,13 +53,13 @@ def filterdata(data, location, status):
     fildata = data
     print(location)
     for row in fildata:
-        if int(row.get('id')) == 100001:
+        if int(row.get('id')) == 1000010:
 
             fildata.remove(row)
     return fildata
 
 
-def dashtable(data, argloc, argstat):
+def dashtable(data, argloc, argstat, argcat):
     """
     This function generates a table based on the JSON data received from the api.
     The table headers must be updated manually to match any new figures.
@@ -70,7 +71,7 @@ def dashtable(data, argloc, argstat):
 
     # print(argloc)
     # print(argstat)
-    testData = filterdata(data, argloc, argstat)
+    testData = filterdata(data, argloc, argstat, argcat)
     # testData = data
     tbl = []
 
