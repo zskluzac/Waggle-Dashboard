@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0bab7336-e10b-461f-a4de-a1544da7017d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/temp.csv" afterPath="$PROJECT_DIR$/static/temp.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/serverdash.html" afterPath="$PROJECT_DIR$/templates/serverdash.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../testapi/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../testapi/.idea/workspace.xml" />
     </list>
@@ -55,8 +54,8 @@
       <file leaf-file-name="serverdash.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/serverdash.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1103">
-              <caret line="110" column="0" lean-forward="true" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+            <state relative-caret-position="141">
+              <caret line="85" column="80" lean-forward="false" selection-start-line="85" selection-start-column="80" selection-end-line="85" selection-end-column="80" />
               <folding>
                 <element signature="n#style#0;n#h1#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -439,7 +438,14 @@
       <option name="project" value="LOCAL" />
       <updated>1498762031712</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Same as before.">
+      <created>1498849929283</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1498849929283</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -543,7 +549,8 @@
     <MESSAGE value="Added ability to interpret node uptime data tied to node ids." />
     <MESSAGE value="Added tons of documentation." />
     <MESSAGE value="Still trying to figure out how D3.js is broken, and how I can fix the author's dumb mistakes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Still trying to figure out how D3.js is broken, and how I can fix the author's dumb mistakes." />
+    <MESSAGE value="Same as before." />
+    <option name="LAST_COMMIT_MESSAGE" value="Same as before." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -719,8 +726,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/serverdash.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1103">
-          <caret line="110" column="0" lean-forward="true" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+        <state relative-caret-position="141">
+          <caret line="85" column="80" lean-forward="false" selection-start-line="85" selection-start-column="80" selection-end-line="85" selection-end-column="80" />
           <folding>
             <element signature="n#style#0;n#h1#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />

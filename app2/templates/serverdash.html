@@ -85,8 +85,6 @@ d3.tsv("data.tsv", type, function(error, data) {
       .style("fill", function(d) { return z(d.key); })
       .on('mouseover', function (d) { d3.select(this).style("fill", "#f3fccc") })
       .on('mouseout', function (d) { d3.select(this).style("fill", function(d) { return z(d.key); }) })
-      <!--.attr('onclick', "window.location='http://127.0.0.1:5000/documentation'")-->
-      .attr('onclick', "window.location='http://127.0.0.1:5000/'")
       .attr("d", area);
 
   layer.filter(function(d) { return d[d.length - 1][1] - d[d.length - 1][0] > 0.01; })
@@ -96,7 +94,6 @@ d3.tsv("data.tsv", type, function(error, data) {
       .attr("dy", ".35em")
       .style("font", "10px sans-serif")
       .style("text-anchor", "left")
-      .attr("onclick", "window.location='{{ url_for("dashboard") }}' + '?cat='")
       .text(function(d) { return d.key; });
 
   g.append("g")
