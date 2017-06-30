@@ -49,12 +49,10 @@ svg.append("rect")
     .attr("stroke-width", "3")
     .attr("fill", '#a89c5c');
 
-<!--var parseTime = d3.timeParse("%Y %b %d");-->
 var parseTime = d3.timeParse("%S");
 
 var x = d3.scaleTime().range([0, width]),
     y = d3.scaleLinear().range([height, 0]),
-    <!--z = d3.scaleOrdinal(d3.schemeCategory20);-->
     z = d3.scaleOrdinal().range(['#d73027','#f46d43','#fdae61','#fee08b','#d9ef8b','#a6d96a','#66bd63','#1a9850'])
 
 var stack = d3.stack();
@@ -98,7 +96,7 @@ d3.tsv("data.tsv", type, function(error, data) {
       .attr("dy", ".35em")
       .style("font", "10px sans-serif")
       .style("text-anchor", "left")
-      .attr("onclick", "window.location='http://127.0.0.1:5000/documentation'")
+      .attr("onclick", "window.location='{{ url_for("dashboard") }}' + '?cat='")
       .text(function(d) { return d.key; });
 
   g.append("g")
@@ -120,18 +118,12 @@ function type(d, i, columns) {
 
 </script>
 
-<script>
+<script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {
-        var paths = document.getElementsByClassName('area');
-        var query = document.querySelectorAll("path");
-        var d3paths = d3.selectAll("area");
-        console.log(d3paths.nodes());
-        console.log(query);
+        var paths = d3.select("body").selectAll("path").each(function(d, i) {
+        console.log(this, d, i);
+        });
         console.log(paths);
-        <!--var i;-->
-        <!--for (i = 0; i < paths.length; i++) {-->
-            <!--console.log(paths[i]);-->
-        <!--};-->
     });
 </script>
 
