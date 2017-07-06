@@ -5,6 +5,7 @@ body {
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 30px;
 }
 h1 {
     text-align: center;

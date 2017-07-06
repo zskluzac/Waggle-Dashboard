@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+
+    .chart rect {
+      fill: steelblue;
+    }
+
+    .chart text {
+      fill: white;
+      font: 10px sans-serif;
+      text-anchor: middle;
+    }
+
+    </style>
+    <script src="/static/js/sorttable.js"></script>
     <link rel="shortcut icon" href="/static/img/logo.png">
     <link rel="stylesheet" type="text/css" href="/static/css/dashboard.css">
     <meta charset="utf-8">
@@ -8,8 +22,7 @@
 
 </head>
 <body>
-
-<ul>
+<ul class="navbar">
     <li><a href= {{ url_for("dashboard") }}>Beehive Node Dashboard</a></li>
     <li><a href= {{ url_for("server") }}>Beehive Server Dashboard</a></li>
     <li><a href= {{ url_for("documentation") }}>Documentation</a></li>
@@ -32,7 +45,7 @@ t = setTimeout(function() {
 getDate();
 </script>
 
-<table id="data" style="background-color: #a89c5c;">
+<table class="sortable" style="background-color: #a89c5c;">
     {% autoescape false %}
     {{ dashtable }}
     {% endautoescape %}

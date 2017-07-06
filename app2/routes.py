@@ -10,6 +10,23 @@ api_url = 'http://127.0.0.1:4000'  # The url of the API for the node dashboard.
 fieldNames = ["time", "< One Minute", "< Five Minutes", "< Thirty Minutes", "< One Hour", "< Six Hours",
               "< One Day", "> One Day"]
 
+# Here are the utility functions
+# ======================================================================================================================
+
+
+def apirequest(url):
+    """
+    This function sends a request to an api, and then converts the received data into JSON.
+    :param url: The url of the chosen api.
+    :return: The received data in JSON format.
+    """
+    req = requests.get(url)
+    json_data = req.json()
+    return json_data
+
+# Here are the functions for generating Beehive Node Dashboard
+# ======================================================================================================================
+
 
 @app.route('/')
 def dashboard():
@@ -29,17 +46,6 @@ def dashboard():
     return render_template('dashboard.html', dashtable=table)
 
 
-def apirequest(url):
-    """
-    This function sends a request to an api, and then converts the received data into JSON.
-    :param url: The url of the chosen api.
-    :return: The received data in JSON format.
-    """
-    req = requests.get(url)
-    json_data = req.json()
-    return json_data
-
-
 def filterdata(data, location, status, cat):
     # TODO: Make this function actually usefully filter the data in a way the user may want.
     """
@@ -51,8 +57,26 @@ def filterdata(data, location, status, cat):
     :return: filtered data
     """
     fildata = data
-    print(location)
     for row in fildata:
+        # TODO: For some reason, I can't filter out cat if it's equal to None.
+        if cat != "" and cat != "None" and cat is not None:
+            # cat = int(cat)
+            print(cat)
+            if cat == 1:
+                print("cat1")
+            elif cat == 2:
+                print("cat2")
+            elif cat == 3:
+                print("cat3")
+            elif cat == 4:
+                print("cat4")
+            elif cat == 5:
+                print("cat5")
+            elif cat == 6:
+                print("cat6")
+            if cat == 7:
+                print("cat7")
+
         if int(row.get('id')) == 1000010:
 
             fildata.remove(row)
@@ -70,7 +94,7 @@ def dashtable(data, argloc, argstat, argcat):
     """
 
     # print(argloc)
-    # print(argstat)
+    print(argcat)
     testData = filterdata(data, argloc, argstat, argcat)
     # testData = data
     tbl = []
@@ -78,10 +102,10 @@ def dashtable(data, argloc, argstat, argcat):
     # This section generates the table headers.
     # This must be manually updated when new columns are to be introduced.
     tbl.append("<tr>")
-    tbl.append("<th>Node ID</th>")
-    tbl.append("<th>Location</th>")
-    tbl.append("<th>Status</th>")
-    tbl.append("<th>Last Update</th>")
+    tbl.append("<th style='cursor: pointer;'>Node ID</th>")
+    tbl.append("<th style='cursor: pointer;'>Location</th>")
+    tbl.append("<th style='cursor: pointer;'>Status</th>")
+    tbl.append("<th style='cursor: pointer;'>Last Update</th>")
     tbl.append("</tr>")
 
     # This section generates a table that has as many rows as there are nodes, and as many columns as there are elements
@@ -103,39 +127,8 @@ def dashtable(data, argloc, argstat, argcat):
         tbl.append("</tr>")
     return ''.join(tbl)  # This returns a single string of HTML code, which will produce the table.
 
-
-def servertable():
-    # TODO: Make this function so that it automatically extends the table when needed.
-    """
-    This function generates HTML code for a table of server information.
-    :return: A string of HTML code to populate the table.
-    """
-    tbl = []
-    tbl.append("<tr>")
-    tbl.append("<th>Last Update</th>")
-    tbl.append("<th>Active Nodes (%)</th>")
-    tbl.append("<th>Median Uptime</th>")
-    tbl.append("<th>Malfunctioning Nodes</th>")
-    tbl.append("</tr>")
-    for x in range(4):
-        tbl.append("<tr>")
-        tbl.append("<td>N/A</td>")
-        tbl.append("<td>N/A</td>")
-        tbl.append("<td>N/A</td>")
-        tbl.append("<td>N/A"
-                   "</td>")
-        tbl.append("</tr>")
-    return ''.join(tbl)
-
-
-@app.route('/documentation')
-def documentation():
-    # TODO: Keep updating this with new information.
-    """
-    This route renders a template to an HTML documentation page.
-    :return: HTML template for documentation page.
-    """
-    return render_template('documentation.html')
+# Here are the functions for generating the Beehive Server Dashboard
+# ======================================================================================================================
 
 
 @app.route('/server')
@@ -217,6 +210,43 @@ def data():
     tempFile = open("static/temp.csv").read()
 
     return tempFile
+
+
+def servertable():
+    # TODO: Make this function so that it automatically extends the table when needed.
+    """
+    This function generates HTML code for a table of server information.
+    :return: A string of HTML code to populate the table.
+    """
+    tbl = []
+    tbl.append("<tr>")
+    tbl.append("<th>Timestmap</th>")
+    tbl.append("<th>Active Nodes (%)</th>")
+    tbl.append("<th>Median Uptime</th>")
+    tbl.append("<th>Malfunctioning Nodes Count</th>")
+    tbl.append("</tr>")
+    for x in range(4):
+        tbl.append("<tr>")
+        tbl.append("<td>N/A</td>")
+        tbl.append("<td>N/A</td>")
+        tbl.append("<td>N/A</td>")
+        tbl.append("<td>N/A"
+                   "</td>")
+        tbl.append("</tr>")
+    return ''.join(tbl)
+
+# Here are the functions used to generate the documentation page.
+# ======================================================================================================================
+
+
+@app.route('/documentation')
+def documentation():
+    # TODO: Keep updating this with new information.
+    """
+    This route renders a template to an HTML documentation page.
+    :return: HTML template for documentation page.
+    """
+    return render_template('documentation.html')
 
 
 if __name__ == '__main__':

@@ -26,7 +26,9 @@ ul {
     list-style-type: none;
     padding: 0;
 }
-        ul li a:hover{color:#e7d676}
+
+ul li a:hover{color:#e7d676}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -51,3 +53,33 @@ img {
     margin: auto;
     width: 35px;
 }
+
+div {
+    display: block;
+    margin: auto;
+    padding: none;
+}
+
+#buttonlist button {
+    width: 6.88%;
+    display: inline-block;
+    margin-top: -40px;
+    border: 2px solid #000000;
+    padding: 10px;
+    outline: none;
+    vertical-align: top;
+}
+
+#buttonlist button:hover {
+    border: 3px solid #000000;
+}
+
+#buttonlist button:active {
+    background-color: #3e8e41;
+    transform: translateY(4px);
+}
+
+svg {
+    display: block;
+}
+

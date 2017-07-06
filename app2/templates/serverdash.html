@@ -33,6 +33,15 @@ getDate();
 </script>
 <h3>Normalized Node Uptime Area Chart</h3>
 <svg width="960" height="500"></svg>
+<div id="buttonlist">
+<button style="background-color: #66bd63; cursor: pointer;" type="button" onclick="window.location= '{{url_for("dashboard")}}?cat=7'">> One Day</button>
+<button style="background-color: #a6d96a; cursor: pointer;" type="button" onclick="window.location='{{url_for("dashboard")}}?cat=6'">< One Day</button>
+<button style="background-color: #d9ef8b; cursor: pointer;" type="button" onclick="window.location='{{url_for("dashboard")}}?cat=5'">< Six Hours</button>
+<button style="background-color: #fee08b; cursor: pointer;" type="button" onclick="window.location='{{url_for("dashboard")}}?cat=4'">< One Hour</button>
+<button style="background-color: #fdae61; cursor: pointer;" type="button" onclick="window.location='{{url_for("dashboard")}}?cat=3'">< Thirty Minutes</button>
+<button style="background-color: #f46d43; cursor: pointer;" type="button" onclick="window.location='{{url_for("dashboard")}}?cat=2'">< Five Minutes</button>
+<button style="background-color: #d73027; cursor: pointer;" type="button" onclick="window.location='{{url_for("dashboard")}}?cat=1'">< One Minute</button>
+</div>
 <script src="//d3js.org/d3.v4.min.js"></script>
 <script>
 
