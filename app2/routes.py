@@ -22,6 +22,7 @@ def apirequest(url):
     """
     req = requests.get(url)
     json_data = req.json()
+    print(json_data)
     return json_data
 
 # Here are the functions for generating Beehive Node Dashboard
@@ -57,29 +58,34 @@ def filterdata(data, location, status, cat):
     :return: filtered data
     """
     fildata = data
-    for row in fildata:
-        # TODO: For some reason, I can't filter out cat if it's equal to None.
-        if cat != "" and cat != "None" and cat is not None:
-            # cat = int(cat)
-            print(cat)
-            if cat == 1:
-                print("cat1")
-            elif cat == 2:
-                print("cat2")
-            elif cat == 3:
-                print("cat3")
-            elif cat == 4:
-                print("cat4")
-            elif cat == 5:
-                print("cat5")
-            elif cat == 6:
-                print("cat6")
-            if cat == 7:
-                print("cat7")
-
-        if int(row.get('id')) == 1000010:
-
-            fildata.remove(row)
+    # for row in fildata:
+    #     # TODO: For some reason, I can't filter out cat if it's equal to None.
+    #     if cat != "" and cat != "None" and cat is not None:
+    #         cat = int(cat)
+    #         print(cat)
+    #         if cat == 1:
+    #             print("cat1")
+    #         elif cat == 2:
+    #             print("cat2")
+    #         elif cat == 3:
+    #             print("cat3")
+    #         elif cat == 4:
+    #             print("cat4")
+    #         elif cat == 5:
+    #             print("cat5")
+    #         elif cat == 6:
+    #             print("cat6")
+    #         if cat == 7:
+    #             print("cat7")
+    #     if status != "" and status != "None" and status is not None:
+    #         if status == "alive":
+    #             if row.get('alive') == 1 or row.get("alive") == 1:
+    #                 print(row)
+    #                 fildata.remove(row)
+    #
+    #     if int(row.get('id')) == 1000010:
+    #
+    #         fildata.remove(row)
     return fildata
 
 
@@ -220,7 +226,7 @@ def servertable():
     """
     tbl = []
     tbl.append("<tr>")
-    tbl.append("<th>Timestmap</th>")
+    tbl.append("<th>Timestamp</th>")
     tbl.append("<th>Active Nodes (%)</th>")
     tbl.append("<th>Median Uptime</th>")
     tbl.append("<th>Malfunctioning Nodes Count</th>")

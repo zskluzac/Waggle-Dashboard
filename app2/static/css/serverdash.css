@@ -1,9 +1,9 @@
 body {
-    background-color: #e7d676;
+    background-color: #F7C767;
 }
 
 table {
-    width: 100%;
+    width: 945px;
     border-collapse: collapse;
 }
 h1 {
@@ -18,23 +18,23 @@ th {
     text-align: left;
 }
 
-tr:hover{background-color:#f3fccc}
+tr:hover{background-color:#F7C767}
 
-ul li a:hover{color:#e7d676}
+ul li a:hover{color:#F7C767}
 
 ul {
     list-style-type: none;
     padding: 0;
 }
 
-ul li a:hover{color:#e7d676}
+ul li a:hover{color:#D58936}
 
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #000000;
+    background-color: #090F0F;
 }
 
 li {
@@ -61,17 +61,17 @@ div {
 }
 
 #buttonlist button {
-    width: 6.88%;
+    width: 131px;
     display: inline-block;
     margin-top: -40px;
-    border: 2px solid #000000;
+    border: 2px solid #090F0F;
     padding: 10px;
     outline: none;
     vertical-align: top;
 }
 
 #buttonlist button:hover {
-    border: 3px solid #000000;
+    border: 3px solid #090F0F;
 }
 
 #buttonlist button:active {
@@ -83,3 +83,33 @@ svg {
     display: block;
 }
 
+#topgrid {
+    height: 500px;
+}
+
+#serverlog {
+    border-collapse: collapse;
+    position: absolute;
+    left: 970px;
+    top: 225px;
+    width: 200px;
+}
+
+#tbody1 {
+    display: table;
+    width: 100%;
+    display: block;
+    height: 413px;
+    overflow-y: auto;
+}
+
+#logcontainer {
+}
+
+#serverlog td {
+    border: none;
+}
+
+#loghead {
+    width: 200px;
+}

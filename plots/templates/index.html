@@ -1,125 +1,64 @@
 <!DOCTYPE html>
-
-<!--Data supplied to this document must have seven variable-->
 <meta charset="utf-8">
 <style>
 
-.bar {
-  fill: steelblue;
+.bar rect {
+  fill: black;
 }
 
-.axis path {
-  display: none;
-}
-
-svg {
-    overflow-x: visible
+.bar text {
+  fill: #fff;
+  font: 10px sans-serif;
 }
 
 </style>
 <svg width="960" height="500"></svg>
-<script src="//d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
-var parseTime = d3.timeParse("%d-%b-%y")
+var data = d3.range(1000).map(d3.randomBates(10));
+
+var formatCount = d3.format(",.0f");
 
 var svg = d3.select("svg"),
-    margin = {top: 20, right: 70, bottom: 60, left: 40},
+    margin = {top: 10, right: 30, bottom: 30, left: 30},
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom,
     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var x = d3.scaleBand()
-    .rangeRound([0, width])
-    .padding(0.1)
-    .align(0.1);
+var x = d3.scaleLinear()
+    .rangeRound([0, width]);
 
-<!--var x = d3.time.Scale()-->
-    <!--.rangeRound([0, width])-->
+var bins = d3.histogram()
+    .domain(x.domain())
+    .thresholds(x.ticks(20))
+    (data);
 
 var y = d3.scaleLinear()
-    .rangeRound([height, 0]);
+    .domain([0, d3.max(bins, function(d) { return d.length; })])
+    .range([height, 0]);
 
-var z = d3.scaleOrdinal()
-    .range(['#d73027','#fc8d59','#fee08b','#ffffbf','#d9ef8b','#91cf60','#1a9850']);
+var bar = g.selectAll(".bar")
+  .data(bins)
+  .enter().append("g")
+    .attr("class", "bar")
+    .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; });
 
-var stack = d3.stack()
-    .offset(d3.stackOffsetExpand);
+bar.append("rect")
+    .attr("x", 1)
+    .attr("width", x(bins[0].x1) - x(bins[0].x0) - 1)
+    .attr("height", function(d) { return height - y(d.length); });
 
-d3.csv("data.csv", type, function(error, data) {
-  if (error) throw error;
+bar.append("text")
+    .attr("dy", ".75em")
+    .attr("y", 6)
+    .attr("x", (x(bins[0].x1) - x(bins[0].x0)) / 2)
+    .attr("text-anchor", "middle")
+    .text(function(d) { return formatCount(d.length); });
 
-  <!--data.sort(function(a, b) { return b[data.columns[1]] / b.total - a[data.columns[1]] / a.total; });-->
+g.append("g")
+    .attr("class", "axis axis--x")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x));
 
-  x.domain(data.map(function(d) { return d.timestamp; }));
-  z.domain(data.columns.slice(1));
-
-  var serie = g.selectAll(".serie")
-    .data(stack.keys(data.columns.slice(1))(data))
-    .enter().append("g")
-      .attr("class", "serie")
-      .attr("fill", function(d) { return z(d.key); });
-
-  serie.selectAll("rect")
-    .data(function(d) { return d; })
-    .enter().append("rect")
-      .attr("x", function(d) { return x(d.data.timestamp); })
-      .attr("y", function(d) { return y(d[1]); })
-      .attr("height", function(d) { return y(d[0]) - y(d[1]); })
-      .attr("width", x.bandwidth());
-
-  g.append("g")
-      .attr("class", "axis axis--x")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x))
-      .selectAll("text")
-        .style("text-anchor", "end")
-        .attr("class", "tickdate")
-        .attr("dx", "8.75em")
-        .attr("dy", "-1.5em")
-        .attr("font-size", "5px")
-        .attr("transform", "rotate(90)")
-        .enter()
-
-  g.append("g")
-      .attr("class", "axis axis--y")
-      .call(d3.axisLeft(y).ticks(10, "%"));
-
-  var legend = serie.append("g")
-      .attr("class", "legend")
-      .attr("transform", function(d) { var d = d[d.length - 1]; return "translate(" + (x(d.data.timestamp) + x.bandwidth()) + "," + ((y(d[0]) + y(d[1])) / 2) + ")"; });
-
-  legend.append("line")
-      .attr("x1", -6)
-      .attr("x2", 6)
-      .attr("stroke", "#000");
-
-  legend.append("text")
-      .attr("x", 9)
-      .attr("dy", "0.35em")
-      .attr("fill", "#000")
-      .style("font", "10px sans-serif")
-      .text(function(d) { return d
-      .key; });
-});
-
-function type(d, i, columns) {
-  for (i = 1, t = 0; i < columns.length; ++i) t += d[columns[i]] = +d[columns[i]];
-  d.total = t;
-  return d;
-}
-
-</script>
-
-<script>
-    <!--var ticks = d3.select("svg").selectAll("g");-->
-window.addEventListener('load', function() {
-    var ticks = svg.select("tick");
-    console.log(ticks.select("_groups"));
-    <!--var arr = Array.prototype.slice.call(ticks);-->
-    <!--console.log(arr);-->
-    <!--arr.forEach(function(d) {-->
-        <!--console.log();-->
-    <!--});-->
-})
 </script>

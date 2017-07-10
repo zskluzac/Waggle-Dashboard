@@ -32,7 +32,52 @@ t = setTimeout(function() {
 getDate();
 </script>
 <h3>Normalized Node Uptime Area Chart</h3>
-<svg width="960" height="500"></svg>
+<div id="topgrid">
+    <div id="row">
+
+        <svg id="areaplot" width="960" height="500"></svg>
+        <div id="logcontainer">
+        <table id="serverlog" style="background-color: #A27035;">
+            <thead>
+            <tr id="loghead"><th>Server Log</th></tr>
+            </thead>
+            <tbody id="tbody1">
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            <tr><td>Data Received . . . </td></tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
 <div id="buttonlist">
 <button style="background-color: #66bd63; cursor: pointer;" type="button" onclick="window.location= '{{url_for("dashboard")}}?cat=7'">> One Day</button>
 <button style="background-color: #a6d96a; cursor: pointer;" type="button" onclick="window.location='{{url_for("dashboard")}}?cat=6'">< One Day</button>
@@ -53,10 +98,10 @@ var svg = d3.select("svg"),
 svg.append("rect")
     .attr("width", "98%")
     .attr("height", "87%")
-    .attr("border", "black")
-    .attr("stroke", "black")
+    .attr("border", "#090F0F")
+    .attr("stroke", "#090F0F")
     .attr("stroke-width", "3")
-    .attr("fill", '#a89c5c');
+    .attr("fill", '#A27035');
 
 var parseTime = d3.timeParse("%S");
 
@@ -90,7 +135,7 @@ d3.tsv("data.tsv", type, function(error, data) {
 
   layer.append("path")
       .attr("class", "area")
-      .attr("stroke", "black")
+      .attr("stroke", "#090F0F")
       .style("fill", function(d) { return z(d.key); })
       .on('mouseover', function (d) { d3.select(this).style("fill", "#f3fccc") })
       .on('mouseout', function (d) { d3.select(this).style("fill", function(d) { return z(d.key); }) })
@@ -134,7 +179,7 @@ function type(d, i, columns) {
 </script>
 
 
-<table style="background-color: #a89c5c;">
+<table style="background-color: #A27035;">
     {% autoescape false %}
     {{ servertable }}
     {% endautoescape %}
