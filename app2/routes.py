@@ -15,6 +15,7 @@ fieldNames = ["time", "< One Minute", "< Five Minutes", "< Thirty Minutes", "< O
 
 
 def apirequest(url):
+    # TODO: Add a function that changes the input data to properly formatted data.
     """
     This function sends a request to an api, and then converts the received data into JSON.
     :param url: The url of the chosen api.
@@ -22,7 +23,10 @@ def apirequest(url):
     """
     req = requests.get(url)
     json_data = req.json()
-    print(json_data)
+    return jsonformat(json_data)
+
+
+def jsonformat(json_data):
     return json_data
 
 # Here are the functions for generating Beehive Node Dashboard
@@ -144,7 +148,7 @@ def server():
     :return: a rendered webpage
     """
     serverTable = servertable()
-    return render_template('serverdash.html', plots2="index.html", servertable=serverTable)
+    return render_template('serverdash.html', plots2="index.html", servertable=serverTable, serverlog=serverlog())
 
 
 @app.route('/data.tsv')
@@ -231,13 +235,22 @@ def servertable():
     tbl.append("<th>Median Uptime</th>")
     tbl.append("<th>Malfunctioning Nodes Count</th>")
     tbl.append("</tr>")
-    for x in range(4):
+    for x in range(15):
         tbl.append("<tr>")
         tbl.append("<td>N/A</td>")
         tbl.append("<td>N/A</td>")
         tbl.append("<td>N/A</td>")
         tbl.append("<td>N/A"
                    "</td>")
+        tbl.append("</tr>")
+    return ''.join(tbl)
+
+
+def serverlog():
+    tbl = []
+    for x in range(100, 0, -1):
+        tbl.append("<tr>")
+        tbl.append("<td> Data Received " + str(x) +"</td>")
         tbl.append("</tr>")
     return ''.join(tbl)
 
