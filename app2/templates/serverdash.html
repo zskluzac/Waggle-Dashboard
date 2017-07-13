@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<ul>
+<ul style="hover{color: #F7C767}">
     <li><a href={{ url_for("dashboard") }}>Beehive Node Dashboard</a></li>
     <li><a href={{ url_for("server") }}>Beehive Server Dashboard</a></li>
     <li><a href={{ url_for("documentation") }}>Documentation</a></li>
@@ -37,7 +37,7 @@ getDate();
 
         <svg id="areaplot" width="960" height="500"></svg>
         <div id="logcontainer">
-        <table id="serverlog" style="background-color: #A27035;">
+        <table id="serverlog" style="background-color: #838E83;">
             <thead>
             <tr id="loghead"><th>Server Log</th></tr>
             </thead>
@@ -73,7 +73,7 @@ svg.append("rect")
     .attr("border", "#090F0F")
     .attr("stroke", "#090F0F")
     .attr("stroke-width", "2")
-    .attr("fill", '#A27035');
+    .attr("fill", '#838E83');
 
 var parseTime = d3.timeParse("%S");
 
@@ -109,7 +109,7 @@ d3.tsv("data.tsv", type, function(error, data) {
       .attr("class", "area")
       .attr("stroke", "#090F0F")
       .style("fill", function(d) { return z(d.key); })
-      .on('mouseover', function (d) { d3.select(this).style("fill", "#f3fccc") })
+      .on('mouseover', function (d) { d3.select(this).style("fill", "#C9CEBD") })
       .on('mouseout', function (d) { d3.select(this).style("fill", function(d) { return z(d.key); }) })
       .attr("d", area);
 
@@ -151,7 +151,7 @@ function type(d, i, columns) {
 </script>
 
 
-<table style="background-color: #A27035;">
+<table style="background-color: #838E83;">
     {% autoescape false %}
     {{ servertable }}
     {% endautoescape %}

@@ -18,7 +18,7 @@
     <link rel="shortcut icon" href="/static/img/logo.png">
     <link rel="stylesheet" type="text/css" href="/static/css/dashboard.css">
     <meta charset="utf-8">
-    <title>Beehive Node Dashboard</title>
+    <title>Node {{ nodeID }} </title>
 
 </head>
 <body>
@@ -31,9 +31,11 @@
 
 <h1 style="border-bottom-style: solid; margin-top: 40px;">
     <img src="/static/img/logo.png" alt="Logo" align="left">
-    Beehive Node Dashboard</h1>
+    Beehive Node {{ nodeID }}</h1>
 
 <div id="date"></div>
+
+<p> {{nodeInfo}} </p>
 
 <script type="text/javascript">
 function getDate() {
@@ -44,12 +46,6 @@ t = setTimeout(function() {
 }
 getDate();
 </script>
-
-<table class="sortable" style="background-color: #838E83;">
-    {% autoescape false %}
-    {{ dashtable }}
-    {% endautoescape %}
-</table>
 
 </body>
 </html>

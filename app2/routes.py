@@ -148,7 +148,7 @@ def server():
     :return: a rendered webpage
     """
     serverTable = servertable()
-    return render_template('serverdash.html', plots2="index.html", servertable=serverTable, serverlog=serverlog())
+    return render_template('serverdash.html', servertable=serverTable, serverlog=serverlog())
 
 
 @app.route('/data.tsv')
@@ -267,6 +267,25 @@ def documentation():
     """
     return render_template('documentation.html')
 
+# Here are the functions used to generate the node pages.
+# ======================================================================================================================
 
+
+@app.route('/node/<nodeID>')
+def showNodePage(nodeID):
+    nodeInfo = nodeTable(nodeID)
+    return render_template('nodepage.html', nodeID=nodeID, nodeInfo=nodeInfo)
+
+
+def nodeTable(nodeID):
+    upData = []
+    nodeData = apirequest("http://10.10.10.137:8000/nodeApi")
+    for row in nodeData:
+        for node in nodeData.get(row):
+            if nodeID in node:
+                upData.append(str(nodeData.get(row).get(node).get('uptime')) + ", ")
+    return ''.join(upData)
+
+# ======================================================================================================================
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

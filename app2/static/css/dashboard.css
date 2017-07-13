@@ -1,5 +1,5 @@
 body {
-    background-color: #F7C767;
+    background-color: #605F59;
 }
 
 table {
@@ -19,17 +19,17 @@ th {
     text-align: left;
 }
 
-tr:hover{background-color:#D58936}
+tr:hover{background-color:#C9CEBD}
 tr {
-     background-color='#A27035'
+     background-color='#838E83'
 }
-ul li a:hover{color:#D58936}
+ul li a:hover{color:#F7C767}
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #090F0F;
+    background-color: #071013;
 }
 
 li {

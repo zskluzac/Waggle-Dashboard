@@ -1,5 +1,5 @@
 body {
-    background-color: #F7C767;
+    background-color: #605F59;
 }
 
 table {
@@ -10,23 +10,23 @@ h1 {
     text-align: center;
 }
 table, td, th{
-    border: 1px solid #090F0F;
+    border: 1px solid #071013;
 }
 th {
     color: #FFFFFF;
-    background-color: #090F0F;
+    background-color: #071013;
     text-align: left;
 }
 
 tr:hover{background-color:#ffffff}
-ul li:hover{color: #938c8a}
-ul li a:hover{color:#D58936}
+ul li:hover{color: #F7C767}
+ul li a:hover{color: #F7C767}
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #090F0F;
+    background-color: #071013;
 }
 
 ul li {

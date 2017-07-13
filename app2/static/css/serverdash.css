@@ -1,5 +1,5 @@
 body {
-    background-color: #F7C767;
+    background-color: #605F59;
 }
 
 table {
@@ -14,27 +14,27 @@ table, td, th{
 }
 th {
     color: #FFFFFF;
-    background-color: #000000;
+    background-color: #071013;
     text-align: left;
 }
 
-tr:hover{background-color:#D58936}
+tr:hover{background-color:#C9CEBD}
 
-ul li a:hover{color:#F7C767}
+ul li a:hover{color: #F7C767}
 
 ul {
     list-style-type: none;
     padding: 0;
 }
 
-ul li a:hover{color:#D58936}
+ul li a:hover{color:#ECBA82}
 
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #090F0F;
+    background-color: #071013;
 }
 
 li {
@@ -64,14 +64,15 @@ div {
     width: 131px;
     display: inline-block;
     margin-top: -40px;
-    border: 2px solid #090F0F;
+    border: 2px solid #071013;
     padding: 10px;
     outline: none;
     vertical-align: top;
+    float: none;
 }
 
 #buttonlist button:hover {
-    border: 3px solid #090F0F;
+    border: 3px solid #071013;
 }
 
 #buttonlist button:active {
@@ -92,7 +93,7 @@ svg {
     position: absolute;
     left: 970px;
     top: 225px;
-    width: 200px;
+    width: 400px;
 }
 
 #tbody1 {
