@@ -280,12 +280,18 @@ def showNodePage(nodeID):
 def nodeTable(nodeID):
     upData = []
     nodeData = apirequest("http://10.10.10.137:8000/nodeApi")
+    print nodeData
+    # sorted(nodeData, key=lambda d: d[""])
     for row in nodeData:
         for node in nodeData.get(row):
-            if nodeID in node:
-                upData.append(str(nodeData.get(row).get(node).get('uptime')) + ", ")
+            if node == "Node " + str(nodeID):
+                upData.append('<tr><td>')
+                upData.append("Uptime: "+str(nodeData.get(row).get(node).get('uptime')))
+                upData.append('</td></tr>')
     return ''.join(upData)
 
 # ======================================================================================================================
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
