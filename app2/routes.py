@@ -23,10 +23,48 @@ def apirequest(url):
     """
     req = requests.get(url)
     json_data = req.json()
-    return jsonformat(json_data)
+    return jsonformat(json_data, 3000)
+    # print(json_data)
+    #return json_data
 
 
-def jsonformat(json_data):
+def jsonformat(json_data, binlength):
+
+    stamplist = []
+    timeDict = {}
+    timeMax = 0
+    timeMin = 0
+    endpoint = 0
+    for line in json_data:
+        timestamp = float(line)
+        if timeMax == 0:
+            timeMin = timestamp
+        if timestamp > timeMax:
+            timeMax = timestamp
+        if timestamp < timeMin:
+            timeMin = timestamp
+    duration = timeMax - timeMin
+    binNum = duration // binlength
+    binlength = duration / binNum
+
+    for bin in range(int(binNum)):
+        timeDict[bin] = []
+        for timestamp in json_data:
+            if endpoint < timestamp < (endpoint + binlength):
+                timeDict[bin] = timeDict.get(bin).append(json_data.get(timestamp))
+        print(bin)
+    print(timeDict)
+
+    # begin = min(stamplist)
+    # end = max(stamplist)
+    # duration = end - begin
+    # numBin = duration // binlength
+    # binlength = duration / numBin
+    # endpoint = 0
+    # binArray = []
+    # for bin in range(numBin):
+    #     binArray.append([])
+
     return json_data
 
 # Here are the functions for generating Beehive Node Dashboard
