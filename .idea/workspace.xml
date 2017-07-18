@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cdf1d5f8-dd0c-449e-904e-941382253266" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app2/routes.py" afterPath="$PROJECT_DIR$/app2/routes.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app2/static/temp.csv" afterPath="$PROJECT_DIR$/app2/static/temp.csv" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -510,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1500393831851</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Just changed the default bin size.">
+      <created>1500395173923</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1500395173923</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView">
@@ -562,7 +567,8 @@
     <MESSAGE value="Started working on binning algorithm. Everything is still functional, but binning algorithm doesn't work yet." />
     <MESSAGE value="The first half of the algorithm (where we just create the bins) works. Now I've got the part where we find the median of the values." />
     <MESSAGE value="Algorithm works!!! No more sawtooth edge on top!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Algorithm works!!! No more sawtooth edge on top!" />
+    <MESSAGE value="Just changed the default bin size." />
+    <option name="LAST_COMMIT_MESSAGE" value="Just changed the default bin size." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
