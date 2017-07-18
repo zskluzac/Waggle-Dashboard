@@ -25,11 +25,21 @@
       <file leaf-file-name="routes.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app2/routes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="26" column="35" lean-forward="false" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+            <state relative-caret-position="496">
+              <caret line="46" column="31" lean-forward="true" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
               <folding>
                 <element signature="e#0#58#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="temp.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app2/static/temp.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="64">
+              <caret line="4" column="28" lean-forward="true" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -493,7 +503,14 @@
       <option name="project" value="LOCAL" />
       <updated>1500391486373</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Algorithm works!!! No more sawtooth edge on top!">
+      <created>1500393831851</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1500393831851</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -544,7 +561,8 @@
     <MESSAGE value="Adjusted Table Width" />
     <MESSAGE value="Started working on binning algorithm. Everything is still functional, but binning algorithm doesn't work yet." />
     <MESSAGE value="The first half of the algorithm (where we just create the bins) works. Now I've got the part where we find the median of the values." />
-    <option name="LAST_COMMIT_MESSAGE" value="The first half of the algorithm (where we just create the bins) works. Now I've got the part where we find the median of the values." />
+    <MESSAGE value="Algorithm works!!! No more sawtooth edge on top!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Algorithm works!!! No more sawtooth edge on top!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -948,8 +966,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app2/routes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="26" column="35" lean-forward="false" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+        <state relative-caret-position="496">
+          <caret line="46" column="31" lean-forward="true" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
           <folding>
             <element signature="e#0#58#0" expanded="true" />
           </folding>

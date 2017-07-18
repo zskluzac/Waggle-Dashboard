@@ -24,9 +24,9 @@ def apirequest(url):
     """
     req = requests.get(url)
     json_data = req.json()
-    return jsonformat(json_data, 15000) #bin length is in seconds. from 1800- 90000
+    return jsonformat(json_data, 1800)  # bin length is in seconds. from 1800- 100000
     # print(json_data)
-    #return json_data
+    # return json_data
 
 
 def jsonformat(json_data, binlength):
@@ -72,7 +72,7 @@ def jsonformat(json_data, binlength):
                 # print(group.get(node).get('uptime'))
         # print(nodeDict)
         timeDict[bin] = nodeDict
-    print(timeDict)
+    # print(timeDict)
     return timeDict
 
 # Here are the functions for generating Beehive Node Dashboard
