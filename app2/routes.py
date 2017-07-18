@@ -24,7 +24,7 @@ def apirequest(url):
     """
     req = requests.get(url)
     json_data = req.json()
-    return jsonformat(json_data, 3000) #bin length is in seconds.
+    return jsonformat(json_data, 15000) #bin length is in seconds. from 1800- 90000
     # print(json_data)
     #return json_data
 
@@ -58,7 +58,7 @@ def jsonformat(json_data, binlength):
                 tempList.append(json_data.get(timestamp))
         timeDict[endpoint] = tempList
         endpoint = endpoint + binlength
-    print(json_data)
+    # print(json_data)
 
     # Then we give each node just one value in each bin
     # -------------------------------------------------
@@ -66,9 +66,13 @@ def jsonformat(json_data, binlength):
         nodeDict = {}
         for group in timeDict.get(bin):
             for node in group:
-                # nodeDict[node]['uptime'] = group.get(node).get('uptime')
-                print(node)
-                print(group.get(node).get('uptime'))
+                nodeDict.get(node)
+                nodeDict[node] = {'uptime': group.get(node).get('uptime')}
+                # print(node)
+                # print(group.get(node).get('uptime'))
+        # print(nodeDict)
+        timeDict[bin] = nodeDict
+    print(timeDict)
     return timeDict
 
 # Here are the functions for generating Beehive Node Dashboard
@@ -224,23 +228,22 @@ def data():
         sixhour = 0
         day = 0
         week = 0
-        for group in jdata.get(timestamp):
-            for node in group:
-                up = group.get(node).get('uptime')
-                if up < 60:
-                    onemin += 1
-                elif up < 60*5:
-                    fivemin += 1
-                elif up < 60*30:
-                    thirtymin += 1
-                elif up < 60*60:
-                    hour += 1
-                elif up < 60*60*6:
-                    sixhour += 1
-                elif up < 60*60*24:
-                    day += 1
-                else:
-                    week += 1
+        for node in jdata.get(timestamp):
+            up = jdata.get(timestamp).get(node).get('uptime')
+            if up < 60:
+                onemin += 1
+            elif up < 60*5:
+                fivemin += 1
+            elif up < 60*30:
+                thirtymin += 1
+            elif up < 60*60:
+                hour += 1
+            elif up < 60*60*6:
+                sixhour += 1
+            elif up < 60*60*24:
+                day += 1
+            else:
+                week += 1
 
         # This is where the data is normalized, so that it is a percentage of the total rather than a quantity.
         total = sum([onemin, fivemin, thirtymin, hour, sixhour, day, week])
