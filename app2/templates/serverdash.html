@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="/static/css/serverdash.css">
     <meta charset="utf-8">
     <script src="//d3js.org/d3.v4.min.js"></script>
+    <script src="/static/js/sorttable.js"></script>
     <title>Beehive Server Dashboard</title>
 </head>
 <body>
@@ -21,7 +22,6 @@
     Beehive Server Dashboard</h1>
 
 <div id="date"></div>
-
 <script type="text/javascript">
 function getDate() {
 document.getElementById("date").innerHTML = "Date: " + Date();
@@ -34,7 +34,6 @@ getDate();
 <h3>Normalized Node Uptime Area Chart</h3>
 <div id="topgrid">
     <div id="row">
-
         <svg id="areaplot" width="960" height="500"></svg>
         <div id="logcontainer">
         <table id="serverlog" style="background-color: #838E83;">
@@ -151,7 +150,13 @@ function type(d, i, columns) {
 </script>
 
 
-<table style="background-color: #838E83;">
+<table style="background-color: #838E83;" class="sortable">
+    <tr>
+        <th>Timestamp</th>
+        <th>Active Nodes (%)</th>
+        <th>Median Uptime</th>
+        <th>Malfunctioning Nodes Count</th>
+    </tr>
     {% autoescape false %}
     {{ servertable }}
     {% endautoescape %}

@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, request
 import requests
 import csv
-import decimal
+import datetime
 
 app = Flask('app2')
 
@@ -10,6 +10,7 @@ key_list = ["id", "location", "alive", "lastupdate"]  # A list of keys of releva
 api_url = 'http://127.0.0.1:4000'  # The url of the API for the node dashboard.
 fieldNames = ["time", "< One Minute", "< Five Minutes", "< Thirty Minutes", "< One Hour", "< Six Hours",
               "< One Day", "> One Day"]
+
 
 # Here are the utility functions
 # ======================================================================================================================
@@ -24,13 +25,13 @@ def apirequest(url):
     """
     req = requests.get(url)
     json_data = req.json()
-    return jsonformat(json_data, 1800)  # bin length is in seconds. from 1800- 100000
+    # return jsonformat(json_data, 1800)  # bin length is in seconds. from 1800- 100000
     # print(json_data)
-    # return json_data
+    return json_data
 
 
 def jsonformat(json_data, binlength):
-    #TODO: This never actually passes the new data along.
+    # TODO: This never actually passes the new data along.
 
     # First we build the bins
     # -----------------------
@@ -206,7 +207,7 @@ def data():
     :return: serves the file object containing all of the data. (Note: The data is also written to a real file.)
     """
     # Fetches the data from the API
-    jdata = apirequest("http://10.10.10.137:8000/nodeApi")
+    jdata = jsonformat(apirequest("http://10.10.10.137:8000/nodeApi"), 1800)
 
     # Organizes a list of timestamp keys to make the graph chronological
     timespan = []
@@ -273,16 +274,12 @@ def servertable():
     This function generates HTML code for a table of server information.
     :return: A string of HTML code to populate the table.
     """
+    jdata = jsonformat(apirequest("http://10.10.10.137:8000/nodeApi"), 1800)
     tbl = []
-    tbl.append("<tr>")
-    tbl.append("<th>Timestamp</th>")
-    tbl.append("<th>Active Nodes (%)</th>")
-    tbl.append("<th>Median Uptime</th>")
-    tbl.append("<th>Malfunctioning Nodes Count</th>")
-    tbl.append("</tr>")
-    for x in range(15):
+    for timestamp in jdata:
+        timestamp = float(timestamp)
         tbl.append("<tr>")
-        tbl.append("<td>N/A</td>")
+        tbl.append("<td>" + str(datetime.datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M')) + "</td>")
         tbl.append("<td>N/A</td>")
         tbl.append("<td>N/A</td>")
         tbl.append("<td>N/A"
@@ -295,7 +292,7 @@ def serverlog():
     tbl = []
     for x in range(100, 0, -1):
         tbl.append("<tr>")
-        tbl.append("<td> Data Received " + str(x) +"</td>")
+        tbl.append("<td> Data Received " + str(x) + "</td>")
         tbl.append("</tr>")
     return ''.join(tbl)
 
@@ -339,4 +336,4 @@ def nodeTable(nodeID):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=5000, host='10.10.10.132')
