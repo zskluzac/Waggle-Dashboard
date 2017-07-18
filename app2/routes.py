@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, request
 import requests
 import csv
+import decimal
 
 app = Flask('app2')
 
@@ -23,18 +24,20 @@ def apirequest(url):
     """
     req = requests.get(url)
     json_data = req.json()
-    return jsonformat(json_data, 3000)
+    return jsonformat(json_data, 3000) #bin length is in seconds.
     # print(json_data)
     #return json_data
 
 
 def jsonformat(json_data, binlength):
+    #TODO: This never actually passes the new data along.
 
+    # First we build the bins
+    # -----------------------
     stamplist = []
     timeDict = {}
     timeMax = 0
     timeMin = 0
-    endpoint = 0
     for line in json_data:
         timestamp = float(line)
         if timeMax == 0:
@@ -46,26 +49,27 @@ def jsonformat(json_data, binlength):
     duration = timeMax - timeMin
     binNum = duration // binlength
     binlength = duration / binNum
-
+    endpoint = timeMin
     for bin in range(int(binNum)):
-        timeDict[bin] = []
+        tempList = []
         for timestamp in json_data:
-            if endpoint < timestamp < (endpoint + binlength):
-                timeDict[bin] = timeDict.get(bin).append(json_data.get(timestamp))
-        print(bin)
-    print(timeDict)
+            convtimestamp = float(timestamp)
+            if endpoint <= convtimestamp < (endpoint + binlength):
+                tempList.append(json_data.get(timestamp))
+        timeDict[endpoint] = tempList
+        endpoint = endpoint + binlength
+    print(json_data)
 
-    # begin = min(stamplist)
-    # end = max(stamplist)
-    # duration = end - begin
-    # numBin = duration // binlength
-    # binlength = duration / numBin
-    # endpoint = 0
-    # binArray = []
-    # for bin in range(numBin):
-    #     binArray.append([])
-
-    return json_data
+    # Then we give each node just one value in each bin
+    # -------------------------------------------------
+    for bin in timeDict:
+        nodeDict = {}
+        for group in timeDict.get(bin):
+            for node in group:
+                # nodeDict[node]['uptime'] = group.get(node).get('uptime')
+                print(node)
+                print(group.get(node).get('uptime'))
+    return timeDict
 
 # Here are the functions for generating Beehive Node Dashboard
 # ======================================================================================================================
@@ -220,22 +224,23 @@ def data():
         sixhour = 0
         day = 0
         week = 0
-        for nodeID in jdata.get(timestamp).keys():
-            up = jdata.get(timestamp).get(nodeID).get("uptime")
-            if up < 60:
-                onemin += 1
-            elif up < 60*5:
-                fivemin += 1
-            elif up < 60*30:
-                thirtymin += 1
-            elif up < 60*60:
-                hour += 1
-            elif up < 60*60*6:
-                sixhour += 1
-            elif up < 60*60*24:
-                day += 1
-            else:
-                week += 1
+        for group in jdata.get(timestamp):
+            for node in group:
+                up = group.get(node).get('uptime')
+                if up < 60:
+                    onemin += 1
+                elif up < 60*5:
+                    fivemin += 1
+                elif up < 60*30:
+                    thirtymin += 1
+                elif up < 60*60:
+                    hour += 1
+                elif up < 60*60*6:
+                    sixhour += 1
+                elif up < 60*60*24:
+                    day += 1
+                else:
+                    week += 1
 
         # This is where the data is normalized, so that it is a percentage of the total rather than a quantity.
         total = sum([onemin, fivemin, thirtymin, hour, sixhour, day, week])
@@ -256,7 +261,6 @@ def data():
     # This section closes the write-only version of the CSV and opens a read-only version of the same file.
     tempFile.close()
     tempFile = open("static/temp.csv").read()
-
     return tempFile
 
 
