@@ -151,7 +151,7 @@ def dashtable(data, argloc, argstat, argcat):
     """
 
     # print(argloc)
-    print(argcat)
+    # print(argcat)
     testData = filterdata(data, argloc, argstat, argcat)
     # testData = data
     tbl = []
@@ -322,7 +322,7 @@ def showNodePage(nodeID):
 def nodeTable(nodeID):
     upData = []
     nodeData = apirequest("http://10.10.10.137:8000/nodeApi")
-    print nodeData
+    # print nodeData
     # sorted(nodeData, key=lambda d: d[""])
     for row in nodeData:
         for node in nodeData.get(row):
