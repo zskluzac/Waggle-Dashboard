@@ -31,7 +31,7 @@ def apirequest(url):
 
 
 def jsonformat(json_data, binlength):
-    # TODO: This never actually passes the new data along.
+    # TODO: document this! It's like the most important part!
 
     # First we build the bins
     # -----------------------
@@ -59,7 +59,6 @@ def jsonformat(json_data, binlength):
                 tempList.append(json_data.get(timestamp))
         timeDict[endpoint] = tempList
         endpoint = endpoint + binlength
-    # print(json_data)
 
     # Then we give each node just one value in each bin
     # -------------------------------------------------
@@ -194,6 +193,12 @@ def server():
     This function renders the server dashboard page and supplies it all of the necessary data.
     :return: a rendered webpage
     """
+    global binlength
+    binlength = request.args.get('bin', 1800, int)
+    if 1800 > binlength:
+        binlength = 1800
+    elif binlength > 90000:
+        binlength = 90000
     serverTable = servertable()
     return render_template('serverdash.html', servertable=serverTable, serverlog=serverlog())
 
@@ -207,7 +212,7 @@ def data():
     :return: serves the file object containing all of the data. (Note: The data is also written to a real file.)
     """
     # Fetches the data from the API
-    jdata = jsonformat(apirequest("http://10.10.10.137:8000/nodeApi"), 1800)
+    jdata = jsonformat(apirequest("http://10.10.10.137:8000/nodeApi"), binlength)
 
     # Organizes a list of timestamp keys to make the graph chronological
     timespan = []
