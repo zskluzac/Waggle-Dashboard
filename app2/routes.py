@@ -194,11 +194,11 @@ def server():
     :return: a rendered webpage
     """
     global binlength
-    binlength = request.args.get('bin', 1800, int)
+    binlength = request.args.get('bin', 30, int)*60
     if 1800 > binlength:
         binlength = 1800
-    elif binlength > 90000:
-        binlength = 90000
+    elif binlength > 86400:
+        binlength = 86400
     serverTable = servertable()
     return render_template('serverdash.html', servertable=serverTable, serverlog=serverlog())
 
