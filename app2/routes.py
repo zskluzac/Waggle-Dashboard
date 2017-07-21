@@ -194,7 +194,7 @@ def server():
     :return: a rendered webpage
     """
     global binlength
-    binlength = request.args.get('bin', 30, int)*59
+    binlength = request.args.get('bin', 30, int)*60
     if 1800 > binlength:
         binlength = 1800
     elif binlength > 86400:
