@@ -5,3 +5,6 @@ plots2/*
 start/
 testapi/static/
 testapi/templates/
+app/
+plots/
+plots2/
