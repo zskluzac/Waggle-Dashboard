@@ -1,5 +1,7 @@
 app/*
 plots/*
 plots2/*
-
-
+.idea/*
+start/
+testapi/static/
+testapi/templates/
