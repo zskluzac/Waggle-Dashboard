@@ -289,8 +289,7 @@ def servertable():
         tbl.append("<td>" + str(datetime.datetime.fromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M')) + "</td>")
         tbl.append("<td>N/A</td>")
         tbl.append("<td>N/A</td>")
-        tbl.append("<td>N/A"
-                   "</td>")
+        tbl.append("<td>N/A</td>")
         tbl.append("</tr>")
     return ''.join(tbl)
 
